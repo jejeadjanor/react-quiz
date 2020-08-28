@@ -6,6 +6,13 @@ const data = [
   { id: 1, value: 0 },
   { id: 2, value: 0 },
   { id: 3, value: 0 },
+  { id: 4, value: 0 },
+];
+
+const newData = [
+  { id: 1, value: 0 },
+  { id: 2, value: 0 },
+  { id: 3, value: 0 },
 ];
 
 // Counter Component
@@ -41,7 +48,8 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      data: [...data]
+      data: [...data],
+      newData : [...newData]
     };
   }
 
@@ -51,19 +59,27 @@ class App extends Component {
       data: data.map(item => {
         item.value = item.id === counter.id ? newValue : item.value;
         return item;
+      }),
+      newData: newData.map(item => {
+        item.value = item.id === counter.id ? newValue : item.value;
+        return item;
       })
     });
   };
 
   render() {
     const { data } = this.state;
+    const { newData } = this.state;
+
     return (
       <div>
         {data.map((counter) => (
           <Counter key={counter.id} value={counter.value} 
           onIncrement={this.onIncrement.bind(this, counter)}/>
         ))}
+       Total: {newData.reduce((totalValue, item) => totalValue + item.value, 0)}
       </div>
+     
     );
   }
 }
