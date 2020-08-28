@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+//Jemima Adjanor repository
 // state data for 3 counters
 const data = [
   { id: 1, value: 0 },
